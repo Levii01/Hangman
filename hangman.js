@@ -1,19 +1,15 @@
 // Tablica liter
 var letters = 'AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ'.split('');
 
-// duze litery
 var password = "";
-// password.toUpperCase();
-
 var howManyFail = 0;
+var password1 = "";
 
 // dźwięki
 var yes = new Audio("blaster-firing.mp3");
 var no = new Audio("chewy_roar.mp3");
 var superwin = new Audio("star-wars-theme-song.mp3");
 var superfail = new Audio("force.mp3");
-
-var password1 = "";
 
 function hidePw() {
     lengthPw = password.length;
@@ -27,10 +23,6 @@ function hidePw() {
 function write_password() {
     document.getElementById("board").innerHTML = password1;
 }
-// wywołanie wyświetlenia hasła przez jakby.. alias
-// mała zmiana.. teraz wywołujemy funkcje start gdzie wyświetlamy co trzeba
-window.onload = setPw;
-
 
 function setPw() {
     document.getElementById("alphabet").innerHTML = '<h2>Gra w Wisielca</h2> <br/> Pozwól komuś wpisać hasło aby zacząć.<br/><br/> <input type="text" id="place1" /> <input type="submit" value="Ustaw"  onclick="startGame()" class="button"/>';
@@ -115,3 +107,7 @@ function check(nr) {
         setTimeout("superfail.play()", 1000);
     }
 }
+
+// wywołanie wyświetlenia hasła przez jakby.. alias
+// mała zmiana.. teraz wywołujemy funkcje start gdzie wyświetlamy co trzeba
+window.onload = setPw;
