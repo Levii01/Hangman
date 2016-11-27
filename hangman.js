@@ -69,17 +69,24 @@ function write_password() {
 window.onload = setPw;
 
 
+function test() {
+  password = document.getElementById("place1").value.toUpperCase();
+  if (password == "")
+    document.getElementById("alphabet").innerHTML = '<h2>Gra w Wisielca</h2> <br/> Aby zacząć, wpisz najpierw hasło.  <br/><br/> <input type="text" id="place1" /> <button class="button" onclick="test()" style="vertical-align:middle"><span>Start </span></button>';
 
+  else startGame();
+
+}
 
 function setPw() {
-    document.getElementById("alphabet").innerHTML = '<h2>Gra w Wisielca</h2> <br/> Pozwól komuś wpisać hasło aby zacząć.<br/><br/> <input type="text" id="place1" /> <input type="submit" value="Ustaw"  onclick="startGame()" class="button"/>';
+    document.getElementById("alphabet").innerHTML = '<h2>Gra w Wisielca</h2> <br/> Pozwól komuś wpisać hasło aby zacząć.<br/><br/> <input type="text" id="place1" /> <button class="button" onclick="test()" style="vertical-align:middle"><span>Start </span></button>';
 
 }
 
 // Funkcja do wyświetlania wszystkiego
 function startGame() {
 
-    password = document.getElementById("place1").value.toUpperCase();
+
     hidePw();
     var alphabet_holder_div = "";
 
