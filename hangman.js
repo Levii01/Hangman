@@ -40,8 +40,6 @@ letters[34] = "Ż";
 var password = "";
 // password.toUpperCase();
 
-// policzenie dlugosci stringa
-var lengthPw = password.length;
 var howManyFail = 0;
 
 // dźwięki
@@ -54,7 +52,7 @@ var password1 = "";
 
 function hidePw() {
     lengthPw = password.length;
-    for (i = 0; i < lengthPw; i++) {
+    for (i = 0; i < password.length; i++) {
         //  charAt to to samo co tablica [i].. ale to funkcja!
         if (password.charAt(i) == " ") password1 = password1 + " ";
         else password1 = password1 + "-";
@@ -104,7 +102,7 @@ function check(nr) {
 
     var goodShot = false;
 
-    for (i = 0; i < lengthPw; i++) {
+    for (i = 0; i < password.length; i++) {
         if (password.charAt(i) == letters[nr]) {
             password1 = password1.setChar(i, letters[nr]);
             goodShot = true;
