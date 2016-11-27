@@ -1,32 +1,4 @@
-// duze litery
-var password = "Pomidory są zajebiste";
-password = password.toUpperCase();
-
-// policzenie dlugosci stringa
-var lengthPw = password.length;
-var howManyFail = 0;
-
-var yes = new Audio("blaster-firing.mp3");
-var no = new Audio("chewy_roar.mp3");
-var superwin = new Audio("star-wars-theme-song.mp3")
-var superfail = new Audio("force.mp3")
-
-var password1 = "";
-
-for (i = 0; i < lengthPw; i++) {
-    //  charAt to to samo co tablica [i].. ale to funkcja!
-    if (password.charAt(i) == " ") password1 = password1 + " ";
-    else password1 = password1 + "-";
-}
-
-function write_password() {
-    document.getElementById("board").innerHTML = password1;
-}
-// wywołanie wyświetlenia hasła przez jakby.. alias
-// mała zmiana.. teraz wywołujemy funkcje start gdzie wyświetlamy co trzeba
-window.onload = start;
-
-
+// Tablica liter
 var letters = new Array(35);
 
 letters[0] = "A";
@@ -64,9 +36,51 @@ letters[31] = "Y";
 letters[32] = "Z";
 letters[33] = "Ź";
 letters[34] = "Ż";
+// duze litery
+var password = "";
+// password.toUpperCase();
+
+// policzenie dlugosci stringa
+var lengthPw = password.length;
+var howManyFail = 0;
+
+// dźwięki
+var yes = new Audio("blaster-firing.mp3");
+var no = new Audio("chewy_roar.mp3");
+var superwin = new Audio("star-wars-theme-song.mp3")
+var superfail = new Audio("force.mp3")
+
+var password1 = "";
+
+function hidePw() {
+    lengthPw = password.length;
+    for (i = 0; i < lengthPw; i++) {
+        //  charAt to to samo co tablica [i].. ale to funkcja!
+        if (password.charAt(i) == " ") password1 = password1 + " ";
+        else password1 = password1 + "-";
+    }
+}
+
+function write_password() {
+    document.getElementById("board").innerHTML = password1;
+}
+// wywołanie wyświetlenia hasła przez jakby.. alias
+// mała zmiana.. teraz wywołujemy funkcje start gdzie wyświetlamy co trzeba
+window.onload = setPw;
+
+
+
+
+function setPw() {
+    document.getElementById("alphabet").innerHTML = '<h2>Gra w Wisielca</h2> <br/> Pozwól komuś wpisać hasło aby zacząć.<br/><br/> <input type="text" id="place1" /> <input type="submit" value="Ustaw"  onclick="startGame()" class="button"/>';
+
+}
 
 // Funkcja do wyświetlania wszystkiego
-function start() {
+function startGame() {
+
+    password = document.getElementById("place1").value.toUpperCase();
+    hidePw();
     var alphabet_holder_div = "";
 
     for (i = 0; i <= 34; i++) {
@@ -134,10 +148,9 @@ function check(nr) {
     }
 
     //przegrana
-    if (howManyFail >= 2) {
+    if (howManyFail >= 9) {
         document.getElementById("alphabet").innerHTML = "Emmm.. Niestety ale przegrałeś. Hasło to : " + password +
-        '<br/><br><span class="reset" onclick="location.reload()">JESZCZE RAZ?</span>';
-        setTimeout("superfail.play()",1000);
-        // superfail.play();
-      }
+            '<br/><br><span class="reset" onclick="location.reload()">JESZCZE RAZ?</span>';
+        setTimeout("superfail.play()", 1000);
+    }
 }
