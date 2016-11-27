@@ -47,8 +47,8 @@ var howManyFail = 0;
 // dźwięki
 var yes = new Audio("blaster-firing.mp3");
 var no = new Audio("chewy_roar.mp3");
-var superwin = new Audio("star-wars-theme-song.mp3")
-var superfail = new Audio("force.mp3")
+var superwin = new Audio("star-wars-theme-song.mp3");
+var superfail = new Audio("force.mp3");
 
 var password1 = "";
 
@@ -67,8 +67,6 @@ function write_password() {
 // wywołanie wyświetlenia hasła przez jakby.. alias
 // mała zmiana.. teraz wywołujemy funkcje start gdzie wyświetlamy co trzeba
 window.onload = setPw;
-
-
 
 
 function setPw() {
@@ -96,11 +94,11 @@ function startGame() {
     write_password();
 }
 
-String.prototype.setChar = function(place, char) {
+String.prototype.setChar = function (place, char) {
     // sprawdzenie długości wyrazy
     if (place > this.length - 1) return this.toString();
     else return this.substr(0, place) + char + this.substr(place + 1);
-}
+};
 
 function check(nr) {
 
